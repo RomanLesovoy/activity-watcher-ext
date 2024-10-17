@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Activity Watcher",
+  "version": "1.0",
+  "description": "Observe your browsing activity",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
