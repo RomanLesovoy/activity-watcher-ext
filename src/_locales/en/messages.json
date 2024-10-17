@@ -1,0 +1,74 @@
+{
+  "extName": {
+    "message": "Website Time Statistics"
+  },
+  "extDescription": {
+    "message": "Tracks time spent on various websites"
+  },
+  "timeStatisticsTitle": {
+    "message": "Time on Websites"
+  },
+  "timeLimitsTitle": {
+    "message": "Websites Time Limits"
+  },
+  "timeLimitsList": {
+    "message": "Time Limits"
+  },
+  "timeStatisticsButtonTab": {
+    "message": "Time on Websites"
+  },
+  "timeLimitsButtonTab": {
+    "message": "Time Limits"
+  },
+  "timeStatisticsList": {
+    "message": "Time on Websites"
+  },
+  "clearTimeStatisticsButton": {
+    "message": "Clear Data"
+  },
+  "addLimitButton": {
+    "message": "Add Limit"
+  },
+  "urlPlaceholder": {
+    "message": "URL"
+  },
+  "hoursPlaceholder": {
+    "message": "Hours"
+  },
+  "invalidInput": {
+    "message": "Please enter a valid number of hours and a valid URL"
+  },
+  "deleteConfirm": {
+    "message": "Are you sure you want to delete the limit for {0}?"
+  },
+  "noLimits": {
+    "message": "No limits"
+  },
+  "hours": {
+    "message": "h"
+  },
+  "minutes": {
+    "message": "m"
+  },
+  "seconds": {
+    "message": "s"
+  },
+  "clearConfirm": {
+    "message": "Are you sure you want to clear all data?"
+  },
+  "noData": {
+    "message": "No data"
+  },
+  "timeLimit": {
+    "message": "Time limit (hours)"
+  },
+  "saveLimits": {
+    "message": "Save limits"
+  },
+  "timeLimitReached": {
+    "message": "Time limit reached"
+  },
+  "timeLimitReachedMessage": {
+    "message": "You've spent {0} hours on {1}"
+  }
+}

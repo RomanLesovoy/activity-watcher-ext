@@ -1,27 +1,45 @@
+import './statisticsContent';
+import './limitsContent';
+
+let title: HTMLTitleElement;
+let limitsContent: HTMLDivElement;
+let statisticsContent: HTMLDivElement;
+let limitsTab: HTMLButtonElement;
+let statisticsTab: HTMLButtonElement;
+
+/**
+ * Initialize popup
+ */
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOMContentLoaded');
-  const timeList = document.getElementById('timeList');
+  title = document.getElementById('extTitle') as HTMLTitleElement;
+  title.textContent = chrome.i18n.getMessage('extName');
 
-  chrome.storage.local.get(['timeData'], (result) => {
-    const timeData = result.timeData || {};
-    
-    for (const [url, time] of Object.entries(timeData)) {
-      const li = document.createElement('li');
-      li.textContent = `${url}: ${formatTime(time as number)}`;
-      timeList?.appendChild(li);
-    }
-  });
-
-  document?.getElementById('clearButton')?.addEventListener('click', () => {
-    chrome.storage.local.remove(['timeData'], () => {
-      location.reload();
-    });
-  });
+  initializeTabsAndContent();
 });
 
-function formatTime(ms: number) {
-  const seconds = Math.floor(ms / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const hours = Math.floor(minutes / 60);
-  return `${hours}ч ${minutes % 60}м ${seconds % 60}с`;
+/**
+ * Initialize tabs and content
+ */
+function initializeTabsAndContent() {
+  limitsContent = document.getElementById('timeLimitsContent') as HTMLDivElement;
+  statisticsContent = document.getElementById('timeStatisticsContent') as HTMLDivElement;
+
+  limitsTab = document.getElementById('timeLimitsButtonTab') as HTMLButtonElement;
+  limitsTab.textContent = chrome.i18n.getMessage('timeLimitsButtonTab');
+  statisticsTab = document.getElementById('timeStatisticsButtonTab') as HTMLButtonElement;
+  statisticsTab.textContent = chrome.i18n.getMessage('timeStatisticsButtonTab');
+
+  limitsTab.addEventListener('click', () => {
+    limitsContent.classList.add('active');
+    statisticsContent.classList.remove('active');
+    limitsTab.classList.add('active');
+    statisticsTab.classList.remove('active');
+  });
+
+  statisticsTab.addEventListener('click', () => {
+    limitsContent.classList.remove('active');
+    statisticsContent.classList.add('active');
+    limitsTab.classList.remove('active');
+    statisticsTab.classList.add('active');
+  });
 }

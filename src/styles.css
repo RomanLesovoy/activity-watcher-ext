@@ -1,0 +1,138 @@
+html.activity-watcher-ext {
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+    v2.0 | 20110126
+    License: none (public domain)
+  */
+
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure, 
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  body {
+    line-height: 1;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  blockquote, q {
+    quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+    content: '';
+    content: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-width: 400px;
+  background-color: black;
+  color: white;
+  /* min-height: 200px; */
+  position: relative;
+}
+
+html.activity-watcher-ext .content {
+  padding: 10px;
+}
+
+html.activity-watcher-ext h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+html.activity-watcher-ext ul {
+  margin-bottom: 10px;
+}
+
+html.activity-watcher-ext li {
+  margin-bottom: 5px;
+}
+
+html.activity-watcher-ext button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  flex: 1;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  &.clearButton {
+    margin-left: auto;
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  &.deleteLimitButton {
+    background-image: url(images/delete.png);
+    background-size: 16px;
+    background-color: transparent;
+    padding: 5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+  }
+
+  &.active {
+    background-color: #c6dbf2;
+    color: rgb(28, 28, 28);
+    cursor: default;
+  }
+}
+
+html.activity-watcher-ext .tabs {
+  display: flex;
+}
+
+html.activity-watcher-ext section {
+  display: none;
+}
+
+html.activity-watcher-ext section.active {
+  display: block !important;
+}
+
+html.activity-watcher-ext .addLimitForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}

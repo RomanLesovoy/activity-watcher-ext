@@ -1,0 +1,71 @@
+{
+  "extName": {
+    "message": "Статистика времени на сайтах"
+  },
+  "extDescription": {
+    "message": "Отслеживает время, проведенное на различных сайтах"
+  },
+  "timeStatisticsTitle": {
+    "message": "Время на сайтах"
+  },
+  "timeLimitsTitle": {
+    "message": "Ограничения времени на сайтах"
+  },
+  "timeLimitsList": {
+    "message": "Ограничения времени"
+  },
+  "timeStatisticsButtonTab": {
+    "message": "Время на сайтах"
+  },
+  "timeLimitsButtonTab": {
+    "message": "Ограничения времени"
+  },
+  "timeStatisticsList": {
+    "message": "Время на сайтах"
+  },
+  "noLimits": {
+    "message": "Нет ограничений"
+  },
+  "invalidInput": {
+    "message": "Пожалуйста, введите допустимое количество часов и допустимый URL"
+  },
+  "deleteConfirm": {
+    "message": "Вы уверены, что хотите удалить ограничение для {0}?"
+  },
+  "addLimitButton": {
+    "message": "Добавить ограничение"
+  },
+  "urlPlaceholder": {
+    "message": "URL"
+  },
+  "hoursPlaceholder": {
+    "message": "Ограничение (часы)"
+  },
+  "hours": {
+    "message": "ч"
+  },
+  "minutes": {
+    "message": "м"
+  },
+  "seconds": {
+    "message": "с"
+  },
+  "clearConfirm": {
+    "message": "Вы уверены, что хотите очистить все данные?"
+  },
+  "noData": {
+    "message": "Нет данных"
+  },
+  "timeLimit": {
+    "message": "Время ограничения (часы)"
+  },
+  "saveLimits": {
+    "message": "Сохранить ограничения"
+  },
+  "timeLimitReached": {
+    "message": "Время ограничения достигнуто"
+  },
+  "timeLimitReachedMessage": {
+    "message": "Вы потратили {0} часов на {1}"
+  }
+}

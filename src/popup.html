@@ -1,13 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html class="activity-watcher-ext">
 <head>
   <meta charset="UTF-8">
-  <title>Time Statistics</title>
+  <title id="extTitle"></title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Time Statistics</h1>
-  <ul id="timeList"></ul>
-  <button id="clearButton">Clear</button>
+
+  <div class="tabs">
+    <button id="timeStatisticsButtonTab" class="active"></button>
+    <button id="timeLimitsButtonTab"></button>
+  </div>
+
+  <section class="content active" id="timeStatisticsContent">
+    <h1 id="timeStatisticsTitle"></h1>
+    <ul id="timeStatisticsList"></ul>
+    <button class="clearButton" id="clearTimeStatisticsButton"></button>
+  </section>
+
+  <section class="content" id="timeLimitsContent">
+    <h1 id="timeLimitsTitle"></h1>
+    <ul id="timeLimitsList"></ul>
+
+    <form id="addLimitForm" class="addLimitForm">
+      <input type="text" id="urlInput" required>
+      <input type="number" id="hoursInput" required min="0" step="1">
+      <button type="submit" id="addLimitButton"></button>
+    </form>
+  </section>
+  
   <script src="popup.js"></script>
 </body>
 </html>
