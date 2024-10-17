@@ -1,14 +1,14 @@
 {
   "name": "activity-watcher-ext",
   "version": "1.0.0",
-  "description": "",
+  "description": "Activity Watcher Chrome Extension",
   "main": "background.js",
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["activity", "time", "limit", "statistics", "chrome", "extension"],
+  "author": "Roman Lesovoy",
   "license": "ISC",
   "devDependencies": {
     "@types/chrome": "^0.0.278",
