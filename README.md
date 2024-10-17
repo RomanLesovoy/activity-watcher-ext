@@ -12,12 +12,12 @@ Activity Watcher is a Chrome extension that observes your browsing activity and 
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/activity-watcher.git
+   git clone https://github.com/RomanLesovoy/activity-watcher-ext.git
    ```
 2. Open Chrome (or any Chromium-based browser) and navigate to `chrome://extensions/`.
 3. Enable "Developer mode" in the top right corner.
 4. Click "Load unpacked."
-5. Select the `activity-watcher` directory.
+5. Select the `activity-watcher-ext/dist` directory.
 6. The extension should now be loaded.
 
 ## Usage
