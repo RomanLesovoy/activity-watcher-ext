@@ -29,6 +29,9 @@
   "invalidInput": {
     "message": "Пожалуйста, введите допустимое количество часов и допустимый URL"
   },
+  "clearTimeStatisticsButton": {
+    "message": "Очистить данные"
+  },
   "deleteConfirm": {
     "message": "Вы уверены, что хотите удалить ограничение для {0}?"
   },

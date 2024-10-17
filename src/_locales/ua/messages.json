@@ -29,6 +29,9 @@
   "deleteConfirm": {
     "message": "Ви впевнені, що хочете видалити обмеження для {0}?"
   },
+  "clearTimeStatisticsButton": {
+    "message": "Очистити дані"
+  },
   "invalidInput": {
     "message": "Будь ласка, введіть допустиму кількість годин і допустимий URL"
   },
