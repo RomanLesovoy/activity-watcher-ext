@@ -32,8 +32,16 @@
   "clearTimeStatisticsButton": {
     "message": "Очистить данные"
   },
+  "timeLimitReachedTitle": {
+    "message": "Время ограничения достигнуто"
+  },
   "deleteConfirm": {
-    "message": "Вы уверены, что хотите удалить ограничение для {0}?"
+    "message": "Вы уверены, что хотите удалить ограничение для $URL$?",
+    "placeholders": {
+      "URL": {
+        "content": "$1"
+      }
+    }
   },
   "addLimitButton": {
     "message": "Добавить ограничение"
@@ -69,6 +77,14 @@
     "message": "Время ограничения достигнуто"
   },
   "timeLimitReachedMessage": {
-    "message": "Вы потратили {0} часов на {1}"
+    "message": "Вы потратили $HOURS$ часов на $WEBSITE$",
+    "placeholders": {
+      "HOURS": {
+        "content": "$1"
+      },
+      "WEBSITE": {
+        "content": "$2"
+      }
+    }
   }
 }

@@ -34,11 +34,14 @@ export async function checkTimeLimit(url: string, hoursSpent: number): Promise<b
 export async function execTimeLimitCheck(currentUrl: string, tab: chrome.tabs.Tab, timeData: TimeData) {
   const limitReached = await checkTimeLimit(currentUrl, timeData[currentUrl]);
     if (limitReached) {
-      // tab.id && chrome.tabs.remove(tab.id!); // todo: implement
+      // tab.id && chrome.tabs.remove(tab.id!); // note: this will close the tab, not the window
       chrome.notifications.create({
         type: 'basic',
         title: chrome.i18n.getMessage('timeLimitReachedTitle'),
-        message: chrome.i18n.getMessage('timeLimitReachedMessage'),
+        message: chrome.i18n.getMessage('timeLimitReachedMessage', [
+          timeData[currentUrl].toString(),
+          currentUrl,
+        ]),
         iconUrl: 'images/notification.png',
     });
   }

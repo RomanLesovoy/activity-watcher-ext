@@ -23,11 +23,19 @@
   "timeLimitsButtonTab": {
     "message": "Ограничения времени"
   },
+  "timeLimitReachedTitle": {
+    "message": "Ограничение времени достигнуто"
+  },
   "noLimits": {
     "message": "Немає обмежень"
   },
   "deleteConfirm": {
-    "message": "Ви впевнені, що хочете видалити обмеження для {0}?"
+    "message": "Ви впевнені, що хочете видалити обмеження для $URL$?",
+    "placeholders": {
+      "URL": {
+        "content": "$1"
+      }
+    }
   },
   "clearTimeStatisticsButton": {
     "message": "Очистити дані"
@@ -69,6 +77,14 @@
     "message": "Ліміт часу досягнуто"
   },
   "timeLimitReachedMessage": {
-    "message": "Ви потратили {0} годин на {1}"
+    "message": "Ви потратили $HOURS$ годин на $WEBSITE$",
+    "placeholders": {
+      "HOURS": {
+        "content": "$1"
+      },
+      "WEBSITE": {
+        "content": "$2"
+      }
+    }
   }
 }

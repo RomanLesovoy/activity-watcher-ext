@@ -39,7 +39,12 @@
     "message": "Please enter a valid number of hours and a valid URL"
   },
   "deleteConfirm": {
-    "message": "Are you sure you want to delete the limit for {0}?"
+    "message": "Are you sure you want to delete the limit for $URL$?",
+    "placeholders": {
+      "URL": {
+        "content": "$1"
+      }
+    }
   },
   "noLimits": {
     "message": "No limits"
@@ -69,6 +74,17 @@
     "message": "Time limit reached"
   },
   "timeLimitReachedMessage": {
-    "message": "You've spent {0} hours on {1}"
+    "message": "You've spent $HOURS$ hours on $WEBSITE$",
+    "placeholders": {
+      "HOURS": {
+        "content": "$1"
+      },
+      "WEBSITE": {
+        "content": "$2"
+      }
+    }
+  },
+  "timeLimitReachedTitle": {
+    "message": "Time limit reached"
   }
 }
