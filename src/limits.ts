@@ -35,18 +35,20 @@ export function ifTimeLimitReached(limit: number | undefined, hoursSpent: number
 /**
  * Execute time limit check for a url
  */
-export async function execTimeLimitCheck(currentUrl: string, tab: chrome.tabs.Tab, timeData: TimeData) {
-  const limitReached = await checkTimeLimit(currentUrl, timeData[currentUrl]);
-    if (limitReached) {
-      // tab.id && chrome.tabs.remove(tab.id!); // note: this will close the tab, not the window
-      chrome.notifications.create({
-        type: 'basic',
-        title: chrome.i18n.getMessage('timeLimitReachedTitle'),
-        message: chrome.i18n.getMessage('timeLimitReachedMessage', [
-          timeData[currentUrl].toString(),
-          currentUrl,
-        ]),
-        iconUrl: 'images/notification.png',
-    });
+export async function execTimeLimitCheck(currentUrl: string, _: chrome.tabs.Tab, timeData: TimeData) {
+  const hoursSpent = timeData[currentUrl] / 3600000;
+  const limitReached = await checkTimeLimit(currentUrl, hoursSpent);
+
+  if (limitReached) {
+    // tab.id && chrome.tabs.remove(tab.id!); // note: this will close the tab, not the window
+    chrome.notifications.create({
+      type: 'basic',
+      title: chrome.i18n.getMessage('timeLimitReachedTitle'),
+      message: chrome.i18n.getMessage('timeLimitReachedMessage', [
+        timeData[currentUrl].toString(),
+        currentUrl,
+      ]),
+      iconUrl: 'images/notification.png',
+  });
   }
 }

@@ -50,9 +50,10 @@ async function handleDeleteLimit(url: string) {
  */
 async function handleAddLimit(url: string, hours: number) {
   try {
-    const urlObj = new URL(url).hostname;
-    if (url && !isNaN(hours) && hours > 0 && urlObj) {
-      await setTimeLimit(url, hours);
+    const urlWithProtocol = url.startsWith('http') ? url : `https://${url}`;
+    const urlHostName = new URL(urlWithProtocol).hostname;
+    if (url && !isNaN(hours) && hours > 0 && urlHostName) {
+      await setTimeLimit(urlHostName, hours);
       await renderTimeLimits();
     } else {
       throw new Error(chrome.i18n.getMessage('invalidInput'));

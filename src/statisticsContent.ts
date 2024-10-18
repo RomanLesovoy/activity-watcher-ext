@@ -35,7 +35,6 @@ async function renderMostVisited() {
   const mostVisited = Object.entries((await getMostVisited() || {}));
   const mostVisitedFiltered = mostVisited
     .filter(([_, time]: [string, number]) => !showSeconds ? time > 60000 : time > 0);
-  console.log(mostVisitedFiltered, mostVisited);
 
   mostVisitedFiltered
     .forEach(([url, time]: [string, number]) => {

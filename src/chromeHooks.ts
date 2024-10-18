@@ -48,7 +48,7 @@ function onTabHandle(tab: chrome.tabs.Tab) {
   startTime = Date.now();
   if (currentUrl) {
     updateTimeForCurrentUrl();
-    execTimeLimitCheck(currentUrl, tab, timeData);
+    timeData[currentUrl] && execTimeLimitCheck(currentUrl, tab, timeData);
   }
 }
 
