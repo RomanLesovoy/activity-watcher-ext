@@ -25,6 +25,10 @@ export async function checkTimeLimit(url: string, hoursSpent: number): Promise<b
   const limits = (await getTimeLimits()) || {};
   // @ts-ignore
   const limit: number = limits[url];
+  return ifTimeLimitReached(limit, hoursSpent);
+}
+
+export function ifTimeLimitReached(limit: number | undefined, hoursSpent: number): boolean {
   return limit ? hoursSpent > limit : false;
 }
 

@@ -1,4 +1,4 @@
-import { getTimeLimits, setTimeLimit } from "./limits";
+import { checkTimeLimit, getTimeLimits, ifTimeLimitReached, setTimeLimit } from "./limits";
 
 let timeLimitsTitle: HTMLHeadingElement;
 let timeLimitsList: HTMLUListElement;
@@ -75,6 +75,8 @@ async function renderTimeLimits() {
     .forEach(([url, time]: [string, number]) => {
       const li = document.createElement('li');
       li.textContent = `${url}: ${time} ${chrome.i18n.getMessage('hours')}`;
+      // @ts-ignore
+      ifTimeLimitReached(timeLimits[url], time) && (li.style.color = 'red');
       timeLimitsList?.appendChild(li);
 
       appendDeleteLimitButton(li, url);
