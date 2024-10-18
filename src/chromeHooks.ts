@@ -7,23 +7,22 @@ let currentUrl: string | null = null;
 let startTime: number | null = null;
 let timeData: TimeData = {};
 
-// TODO remove after testing
  /**
  * Update time spent on current url when tab is activated
  */
-//  chrome.tabs.onActivated.addListener(async (activeInfo) => {
-//   const tab = await chrome.tabs.get(activeInfo.tabId);
-//   onTabHandle(tab);
-// });
+ chrome.tabs.onActivated.addListener(async (activeInfo) => {
+  const tab = await chrome.tabs.get(activeInfo.tabId);
+  onTabHandle(tab);
+});
 
 /**
  * Update time spent on current url when tab is updated
  */
-// chrome.tabs.onUpdated.addListener((_, changeInfo, tab) => {
-//   if (changeInfo.status === 'complete' && tab.active) {
-//     onTabHandle(tab);
-//   }
-// });
+chrome.tabs.onUpdated.addListener((_, changeInfo, tab) => {
+  if (changeInfo.status === 'complete' && tab.active) {
+    onTabHandle(tab);
+  }
+});
 
 /**
  * Handle window focus change
@@ -64,7 +63,7 @@ function updateTimeForCurrentUrl() {
     chrome.storage[storageType].set({ timeData });
   }
 }
-setInterval(updateTimeForCurrentUrl, 5000);
+setInterval(updateTimeForCurrentUrl, 10000);
 
 /**
  * Sync most visited data with popup on install
