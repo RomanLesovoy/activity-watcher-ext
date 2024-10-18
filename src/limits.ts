@@ -45,7 +45,7 @@ export async function execTimeLimitCheck(currentUrl: string, _: chrome.tabs.Tab,
       type: 'basic',
       title: chrome.i18n.getMessage('timeLimitReachedTitle'),
       message: chrome.i18n.getMessage('timeLimitReachedMessage', [
-        timeData[currentUrl].toString(),
+        hoursSpent.toString(),
         currentUrl,
       ]),
       iconUrl: 'images/notification.png',
