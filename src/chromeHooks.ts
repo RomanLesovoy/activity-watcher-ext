@@ -20,6 +20,10 @@ chrome.tabs.onUpdated.addListener((_, changeInfo, tab) => {
   if (changeInfo.status === 'complete' && tab.active) {
     onTabHandle(tab);
   }
+
+  if (tab.discarded) { // hidden
+    currentUrl = null;
+  }
 });
 
 /**
@@ -35,6 +39,15 @@ chrome.windows.onFocusChanged.addListener(async (windowId) => {
     if (tabs[0] && tabs[0].id && tabs[0].url) {
       onTabHandle(tabs[0]);
     }
+  }
+});
+
+/**
+ * Reset current url when window is removed
+ */
+chrome.windows.onRemoved.addListener((windowId) => {
+  if (windowId === chrome.windows.WINDOW_ID_NONE) {
+    currentUrl = null;
   }
 });
 
