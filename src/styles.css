@@ -136,3 +136,30 @@ html.activity-watcher-ext .addLimitForm {
   gap: 10px;
   margin-top: 10px;
 }
+
+html.activity-watcher-ext .timeLimitsList {
+  max-height: calc(21px * 7);
+  overflow-y: auto;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #d1d1d5 #4d4d4d;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #d1d1d5;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d1d1d5;
+  border-radius: 4px;
+  border: 3px outset #707070;
+}

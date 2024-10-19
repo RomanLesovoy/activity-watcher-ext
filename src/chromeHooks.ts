@@ -1,11 +1,9 @@
 import { execTimeLimitCheck } from './limits';
-import { TimeData } from './types';
-import { syncMostData } from './statistics';
+import { getAllData, syncMostData } from './statistics';
 import { storageType } from './constants';
 
 let currentUrl: string | null = null;
 let startTime: number | null = null;
-let timeData: TimeData = {};
 
  /**
  * Update time spent on current url when tab is activated
@@ -43,27 +41,32 @@ chrome.windows.onFocusChanged.addListener(async (windowId) => {
 /**
  * Handle tab update
  */
-function onTabHandle(tab: chrome.tabs.Tab) {
+async function onTabHandle(tab: chrome.tabs.Tab) {
   tab.url && (currentUrl = new URL(tab.url).hostname);
   startTime = Date.now();
+  const statistics = await getAllData();
   if (currentUrl) {
     updateTimeForCurrentUrl();
-    timeData[currentUrl] && execTimeLimitCheck(currentUrl, tab, timeData);
+    // @ts-ignore
+    statistics[currentUrl] && execTimeLimitCheck(currentUrl, tab, statistics);
   }
 }
 
 /**
  * Update time spent on current url
  */
-function updateTimeForCurrentUrl() {
+async function updateTimeForCurrentUrl() {
   if (currentUrl && startTime) {
     const timeSpent = Date.now() - startTime;
-    timeData[currentUrl] = (timeData[currentUrl] || 0) + timeSpent;
+    const statistics = await getAllData();
+    // @ts-ignore
+    statistics[currentUrl] += timeSpent;
     startTime = Date.now();
-    chrome.storage[storageType].set({ timeData });
+    console.log('statistics', statistics);
+    chrome.storage[storageType].set({ timeData: statistics });
   }
 }
-setInterval(updateTimeForCurrentUrl, 10000);
+setInterval(updateTimeForCurrentUrl, 15000);
 
 /**
  * Sync most visited data with popup on install
