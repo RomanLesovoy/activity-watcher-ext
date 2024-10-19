@@ -62,7 +62,6 @@ async function updateTimeForCurrentUrl() {
     // @ts-ignore
     statistics[currentUrl] += timeSpent;
     startTime = Date.now();
-    console.log('statistics', statistics);
     chrome.storage[storageType].set({ timeData: statistics });
   }
 }
