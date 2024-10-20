@@ -1,6 +1,6 @@
 import { execTimeLimitCheck } from './limits';
-import { getAllData, syncMostData } from './statistics';
-import { storageType } from './constants';
+import { getAllData, syncMostData, cleanupStatistics } from './statistics';
+import { KEY_ALL, storageType } from './constants';
 
 let currentUrl: string | null = null;
 let startTime: number | null = null;
@@ -60,7 +60,6 @@ async function onTabHandle(tab: chrome.tabs.Tab) {
   const statistics = await getAllData();
   if (currentUrl) {
     updateTimeForCurrentUrl();
-    // @ts-ignore
     statistics[currentUrl] && execTimeLimitCheck(currentUrl, tab, statistics);
   }
 }
@@ -72,10 +71,11 @@ async function updateTimeForCurrentUrl() {
   if (currentUrl && startTime) {
     const timeSpent = Date.now() - startTime;
     const statistics = await getAllData();
-    // @ts-ignore
     statistics[currentUrl] += timeSpent;
     startTime = Date.now();
-    chrome.storage[storageType].set({ timeData: statistics });
+    
+    const cleanedStatistics = await cleanupStatistics(statistics);
+    await chrome.storage[storageType].set({ [KEY_ALL]: cleanedStatistics });
   }
 }
 setInterval(updateTimeForCurrentUrl, 15000);

@@ -1,10 +1,10 @@
 import { KEY_TIME_LIMITS, storageType } from './constants';
-import { TimeData, TimeLimits } from './types';
+import { TimeData } from './types';
 
 /**
  * Get time limits
  */
-export async function getTimeLimits(): Promise<TimeLimits> {
+export async function getTimeLimits(): Promise<TimeData> {
   return (await chrome.storage[storageType].get([KEY_TIME_LIMITS]))[KEY_TIME_LIMITS];
 }
 
@@ -13,7 +13,6 @@ export async function getTimeLimits(): Promise<TimeLimits> {
  */
 export async function setTimeLimit(url: string, hoursSpent: number): Promise<void> {
   const timeLimits = (await getTimeLimits()) || {};
-  // @ts-ignore
   timeLimits[url] = hoursSpent;
   chrome.storage[storageType].set({ [KEY_TIME_LIMITS]: timeLimits });
 }
@@ -23,7 +22,6 @@ export async function setTimeLimit(url: string, hoursSpent: number): Promise<voi
  */
 export async function checkTimeLimit(url: string, hoursSpent: number): Promise<boolean> {
   const limits = (await getTimeLimits()) || {};
-  // @ts-ignore
   const limit: number = limits[url];
   return ifTimeLimitReached(limit, hoursSpent);
 }
