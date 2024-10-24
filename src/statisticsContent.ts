@@ -32,8 +32,7 @@ async function renderMostVisited() {
   timeStatisticsList.innerHTML = '';
   const mostVisited = Object.entries((await getMostVisited() || {}));
   const mostVisitedFiltered = mostVisited
-    .filter(([_, time]: [string, number]) => !SHOW_SECONDS ? time > 60000 : time > 0);
-  console.log(mostVisitedFiltered);
+    .filter(([_, time]: [string, number]) => !SHOW_SECONDS ? time > 60000 : time > 1000);
 
   mostVisitedFiltered
     .forEach(([url, time]: [string, number]) => {
