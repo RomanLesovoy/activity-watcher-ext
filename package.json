@@ -1,6 +1,6 @@
 {
   "name": "activity-watcher-ext",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Activity Watcher Chrome Extension",
   "main": "background.js",
   "scripts": {
