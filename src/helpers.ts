@@ -12,3 +12,12 @@ export function formatTime(ms: number, showSeconds: boolean = false) {
 
   return `${hoursText}${minutesText}${showSeconds ? secondsText : ''}`.trim();
 }
+
+/**
+ * Prepare url origin
+ */
+export function prepareUrl(url: string) {
+  const urlWithProtocol = url.startsWith('http') || url.startsWith('https') ? url : `https://${url}`;
+  const urlHostName = new URL(urlWithProtocol).origin;
+  return urlHostName;
+}

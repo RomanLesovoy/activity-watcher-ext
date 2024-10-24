@@ -5,14 +5,14 @@ import { TimeData } from './types';
  * Get most visited sites
  */
 export async function getMostVisited(): Promise<TimeData> {
-  return (await chrome.storage[storageType].get([KEY_MOST]) || {})[KEY_MOST];
+  return (await chrome.storage[storageType].get([KEY_MOST]) || {})[KEY_MOST] || {};
 }
 
 /**
  * Get all time data
  */
 export async function getAllData(): Promise<TimeData> {
-  return (await chrome.storage[storageType].get([KEY_ALL]) || {})[KEY_ALL];
+  return (await chrome.storage[storageType].get([KEY_ALL]) || {})[KEY_ALL] || {};
 }
 
 /**

@@ -1,4 +1,5 @@
-import { checkTimeLimit, getTimeLimits, ifTimeLimitReached, setTimeLimit } from "./limits";
+import { getTimeLimits, ifTimeLimitReached, setTimeLimit } from "./limits";
+import { prepareUrl } from "./helpers";
 
 let timeLimitsTitle: HTMLHeadingElement;
 let timeLimitsList: HTMLUListElement;
@@ -50,8 +51,7 @@ async function handleDeleteLimit(url: string) {
  */
 async function handleAddLimit(url: string, hours: number) {
   try {
-    const urlWithProtocol = url.startsWith('http') ? url : `https://${url}`;
-    const urlHostName = new URL(urlWithProtocol).hostname;
+    const urlHostName = prepareUrl(url);
     if (url && !isNaN(hours) && hours > 0 && urlHostName) {
       await setTimeLimit(urlHostName, hours);
       await renderTimeLimits();

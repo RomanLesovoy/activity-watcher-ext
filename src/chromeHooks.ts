@@ -1,7 +1,7 @@
 import { execTimeLimitCheck } from './limits';
 import { getAllData, syncMostData, cleanupStatistics } from './statistics';
 import { KEY_ALL, storageType } from './constants';
-
+import { prepareUrl } from './helpers';
 let currentUrl: string | null = null;
 let startTime: number | null = null;
 
@@ -55,7 +55,7 @@ chrome.windows.onRemoved.addListener((windowId) => {
  * Handle tab update
  */
 async function onTabHandle(tab: chrome.tabs.Tab) {
-  tab.url && (currentUrl = new URL(tab.url).hostname);
+  tab.url && (currentUrl = prepareUrl(tab.url));
   startTime = Date.now();
   const statistics = await getAllData();
   if (currentUrl) {
@@ -71,7 +71,7 @@ async function updateTimeForCurrentUrl() {
   if (currentUrl && startTime) {
     const timeSpent = Date.now() - startTime;
     const statistics = await getAllData();
-    statistics[currentUrl] += timeSpent;
+    statistics[currentUrl] ? statistics[currentUrl] += timeSpent : statistics[currentUrl] = timeSpent;
     startTime = Date.now();
     
     const cleanedStatistics = await cleanupStatistics(statistics);

@@ -1,5 +1,4 @@
-import { KEY_MOST, storageType } from "./constants";
-import { KEY_ALL } from "./constants";
+import { KEY_MOST, storageType, SHOW_SECONDS, KEY_ALL } from "./constants";
 import { getMostVisited } from "./statistics";
 import { formatTime } from "./helpers";
 
@@ -30,16 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
  * Render most visited sites
  */
 async function renderMostVisited() {
-  const showSeconds = false;
   timeStatisticsList.innerHTML = '';
   const mostVisited = Object.entries((await getMostVisited() || {}));
   const mostVisitedFiltered = mostVisited
-    .filter(([_, time]: [string, number]) => !showSeconds ? time > 60000 : time > 0);
+    .filter(([_, time]: [string, number]) => !SHOW_SECONDS ? time > 60000 : time > 0);
+  console.log(mostVisitedFiltered);
 
   mostVisitedFiltered
     .forEach(([url, time]: [string, number]) => {
       const li = document.createElement('li');
-      li.textContent = `${url}: ${formatTime(time as number, showSeconds)}`;
+      li.textContent = `${url}: ${formatTime(time as number, SHOW_SECONDS)}`;
       timeStatisticsList?.appendChild(li);
     });
 
