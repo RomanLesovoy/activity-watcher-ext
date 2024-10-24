@@ -13,7 +13,6 @@ export async function getTimeLimits(): Promise<TimeData> {
  */
 export async function setTimeLimit(url: string, hoursSpent: number): Promise<void> {
   const timeLimits = (await getTimeLimits()) || {};
-  console.log('save', url, hoursSpent);
   timeLimits[url] = hoursSpent;
   chrome.storage[storageType].set({ [KEY_TIME_LIMITS]: timeLimits });
 }
@@ -24,7 +23,6 @@ export async function setTimeLimit(url: string, hoursSpent: number): Promise<voi
 export async function checkTimeLimit(url: string, hoursSpent: number): Promise<boolean> {
   const limits = (await getTimeLimits()) || {};
   const limit: number = limits[prepareUrl(url)];
-  console.log('check', limit, prepareUrl(url), limits, hoursSpent);
   return ifTimeLimitReached(limit, hoursSpent);
 }
 
